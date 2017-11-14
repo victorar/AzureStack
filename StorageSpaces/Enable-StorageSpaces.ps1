@@ -1,6 +1,8 @@
 ﻿
-$vDisks = 8
-$vhdsPervDisk = 4
+param (
+    [Parameter(Mandatory=$true)][int][ValidateRange(1,32)]$vDisks,
+    [Parameter(Mandatory=$true)][int][ValidateRange(1,32)]$vhdsPervDisk
+)
 
 $PhysicalDisks = Get-StorageSubSystem -FriendlyName "Windows Storage*" | Get-PhysicalDisk -CanPool $True 
 
